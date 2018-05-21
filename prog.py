@@ -151,7 +151,7 @@ J   K   L    ====> Translação no plano XY
 
    Z X       ====> Alteração do zoom
 
-    N        ====> Alteração da profundidade
+    N        ====> Alteração do objeto
     
     E        ====> Espelhamento""")
 
