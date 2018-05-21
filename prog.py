@@ -4,8 +4,8 @@ from OpenGL.GLUT import *
 
 from math import sqrt
 
-anglex = 0
-angley = 0
+anglex = 30
+angley = 30
 anglez = 30
 
 zoom   = 1
@@ -151,7 +151,9 @@ J   K   L    ====> Translação no plano XY
 
    Z X       ====> Alteração do zoom
 
-    N        ====> Alteração da profundidade""")
+    N        ====> Alteração da profundidade
+    
+    E        ====> Espelhamento""")
 
 
     print("\n")
