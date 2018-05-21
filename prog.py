@@ -138,6 +138,27 @@ def display():
 
 
 if __name__ == '__main__':   
+    print(
+"""Atenção para o modo de uso!!!
+
+  TECLAS     ====>      FUNÇÃO
+  ------                ------
+    W
+A   S   D    ====> Alteração do ângulo
+
+    I
+J   K   L    ====> Translação no plano XY
+
+   Z X       ====> Alteração do zoom
+
+    N        ====> Alteração da profundidade""")
+
+
+    print("\n")
+    print("Pressione ENTER para iniciar\n")
+    input()
+
+
     glutInit()
     glutInitWindowSize(800, 800)
     glutCreateWindow("Trab 2")
