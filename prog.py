@@ -59,7 +59,7 @@ def keyPressEvent(key, x, y) :
     angley = (angley + 720) % 360
     anglez = (anglez + 720) % 360
 
-    glutSetWindowTitle('Angle: ({}, {}, {})'.format(anglex, angley, anglez));
+    glutSetWindowTitle('Angle: ({}, {}, {}); Zoom: {}; Padding: ({}, {})'.format(anglex, angley, anglez, zoom, padx, pady));
     display()
 
 
