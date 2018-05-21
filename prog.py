@@ -8,12 +8,18 @@ anglex = 30
 angley = 30
 anglez = 30
 
+zoom   = 1
+
+padx   = 0
+pady   = 0
+
+
 def init():
     glClearColor(1, 1, 1, 0)
 
 
 def keyPressEvent(key, x, y) :
-    global anglex, angley, anglez
+    global anglex, angley, anglez, zoom, padx, pady
 
     key = key.decode('ascii')
 
@@ -28,6 +34,30 @@ def keyPressEvent(key, x, y) :
         anglex -= 1
     elif key == 'd':
         angley += 1
+
+    elif key == 'e':
+        anglex += 180
+        angley += 180
+        anglez += 180
+
+    elif key == 'z':
+        zoom = max(0.1, zoom - 0.1)
+    elif key == 'x':
+        zoom = min(10, zoom + 0.1)
+
+    elif key == 'i':
+        pady += 0.1
+    elif key == 'j':
+        padx -= 0.1
+    elif key == 'k':
+        pady -= 0.1
+    elif key == 'l':
+        padx += 0.1
+
+
+    anglex = (anglex + 720) % 360
+    angley = (angley + 720) % 360
+    anglez = (anglez + 720) % 360
 
     glutSetWindowTitle('Angle: ({}, {}, {})'.format(anglex, angley, anglez));
     display()
@@ -53,12 +83,18 @@ def display():
 
     # Definimos cor
     glColor3f(0, 0, 0)
+    
+    # Adicionamos o padding
+    glTranslatef(padx, pady, 0)
+
 
     glTranslatef(-0.666, 0.666, 0)
     glRotate(anglex, 1, 0, 0)
     glRotate(angley, 0, 1, 0)
     glRotate(anglez, 0, 0, 1)
+    glScale(zoom, zoom, zoom)
     glutWireCube(0.4)
+    glScale(1/zoom, 1/zoom, 1/zoom)
     glRotate(-anglez, 0, 0, 1)
     glRotate(-angley, 0, 1, 0)
     glRotate(-anglex, 1, 0, 0)
@@ -67,7 +103,9 @@ def display():
     glRotate(anglex, 1, 0, 0)
     glRotate(angley, 0, 1, 0)
     glRotate(anglez, 0, 0, 1)
+    glScale(zoom, zoom, zoom)
     glutWireSphere(0.2, 10, 10)
+    glScale(1/zoom, 1/zoom, 1/zoom)
     glRotate(-anglez, 0, 0, 1)
     glRotate(-angley, 0, 1, 0)
     glRotate(-anglex, 1, 0, 0)
@@ -76,7 +114,9 @@ def display():
     glRotate(anglex, 1, 0, 0)
     glRotate(angley, 0, 1, 0)
     glRotate(anglez, 0, 0, 1)
+    glScale(zoom, zoom, zoom)
     glutWireCone(0.2, 0.2, 10, 10)
+    glScale(1/zoom, 1/zoom, 1/zoom)
     glRotate(-anglez, 0, 0, 1)
     glRotate(-angley, 0, 1, 0)
     glRotate(-anglex, 1, 0, 0)
@@ -85,7 +125,9 @@ def display():
     glRotate(anglex, 1, 0, 0)
     glRotate(angley, 0, 1, 0)
     glRotate(anglez, 0, 0, 1)
+    glScale(zoom, zoom, zoom)
     glutWireTorus(0.05, 0.2, 10, 10)
+    glScale(1/zoom, 1/zoom, 1/zoom)
     glRotate(-anglez, 0, 0, 1)
     glRotate(-angley, 0, 1, 0)
     glRotate(-anglex, 1, 0, 0)
@@ -96,7 +138,9 @@ def display():
     glRotate(anglex, 1, 0, 0)
     glRotate(angley, 0, 1, 0)
     glRotate(anglez, 0, 0, 1)
+    glScale(zoom, zoom, zoom)
     glutWireDodecahedron()
+    glScale(1/zoom, 1/zoom, 1/zoom)
     glRotate(-anglez, 0, 0, 1)
     glRotate(-angley, 0, 1, 0)
     glRotate(-anglex, 1, 0, 0)
@@ -108,7 +152,9 @@ def display():
     glRotate(anglex, 1, 0, 0)
     glRotate(angley, 0, 1, 0)
     glRotate(anglez, 0, 0, 1)
+    glScale(zoom, zoom, zoom)
     glutWireOctahedron()
+    glScale(1/zoom, 1/zoom, 1/zoom)
     glRotate(-anglez, 0, 0, 1)
     glRotate(-angley, 0, 1, 0)
     glRotate(-anglex, 1, 0, 0)
@@ -120,7 +166,9 @@ def display():
     glRotate(anglex, 1, 0, 0)
     glRotate(angley, 0, 1, 0)
     glRotate(anglez, 0, 0, 1)
+    glScale(zoom, zoom, zoom)
     glutWireTetrahedron()
+    glScale(1/zoom, 1/zoom, 1/zoom)
     glRotate(-anglez, 0, 0, 1)
     glRotate(-angley, 0, 1, 0)
     glRotate(-anglex, 1, 0, 0)
@@ -132,7 +180,9 @@ def display():
     glRotate(anglex, 1, 0, 0)
     glRotate(angley, 0, 1, 0)
     glRotate(anglez, 0, 0, 1)
+    glScale(zoom, zoom, zoom)
     glutWireIcosahedron()
+    glScale(1/zoom, 1/zoom, 1/zoom)
     glRotate(-anglez, 0, 0, 1)
     glRotate(-angley, 0, 1, 0)
     glRotate(-anglex, 1, 0, 0)
@@ -142,7 +192,9 @@ def display():
     glRotate(anglex, 1, 0, 0)
     glRotate(angley, 0, 1, 0)
     glRotate(anglez, 0, 0, 1)
+    glScale(zoom, zoom, zoom)
     glutWireTeapot(0.1)
+    glScale(1/zoom, 1/zoom, 1/zoom)
     glRotate(-anglez, 0, 0, 1)
     glRotate(-angley, 0, 1, 0)
     glRotate(-anglex, 1, 0, 0)
